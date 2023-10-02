@@ -1,4 +1,5 @@
-// Copyright 2023 Google LLC
+
+
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,7 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-function start(){(async (tab) => {
+chrome.action.onClicked.addListener(async (tab) => {
   const existingContexts = await chrome.runtime.getContexts({});
   let recording = false;
 
@@ -37,7 +38,7 @@ function start(){(async (tab) => {
       type: 'stop-recording',
       target: 'offscreen'
     });
-    chrome.action.setIcon({ path: 'icons/iCON32n.png' });
+    chrome.action.setIcon({ path: 'icons/not-recording.png' });
     return;
   }
 
@@ -53,7 +54,5 @@ function start(){(async (tab) => {
     data: streamId
   });
 
-  chrome.action.setIcon({ path: '/icons/recording.png ' });
-})}
-
-start()
+  chrome.action.setIcon({ path: '/icons/recording.png' });
+});

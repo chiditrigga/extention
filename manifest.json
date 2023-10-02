@@ -5,8 +5,8 @@
   "manifest_version": 3,
   "minimum_chrome_version": "116",
   "action": {
-    "default_icon": "/icons/iCON32n.png",
-    "default_popup": "offscreen.html"
+    "default_icon": "/icons/iCON32n.png"
+   
   },
 
 

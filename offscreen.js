@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-
 chrome.runtime.onMessage.addListener(async (message) => {
   if (message.target === 'offscreen') {
     switch (message.type) {
@@ -28,8 +26,6 @@ chrome.runtime.onMessage.addListener(async (message) => {
     }
   }
 });
-
-
 
 let recorder;
 let data = [];
@@ -64,8 +60,7 @@ async function startRecording(streamId) {
   recorder.ondataavailable = (event) => data.push(event.data);
   recorder.onstop = () => {
     const blob = new Blob(data, { type: 'video/webm' });
-    window.open(URL.createObjectURL(blob), 'google.com');
-  
+    window.open(URL.createObjectURL(blob), '_blank');
 
     // Clear state ready for next recording
     recorder = undefined;
@@ -97,5 +92,4 @@ async function stopRecording() {
   // make sure the browser keeps the Object URL we create (see above) and to
   // keep the sample fairly simple to follow.
 }
-
   
